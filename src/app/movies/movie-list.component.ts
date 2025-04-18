@@ -10,6 +10,8 @@ export class MovieListComponent {
     subTitle: string= '영화리스트';
     imgWidth: number = 55;
     imgMargin: number = 2;
+    isImgDisplayed: boolean = false;
+    filterText = 'martrix4';
     movies: any[] = [
         {
             "movieId": 1,
@@ -30,5 +32,7 @@ export class MovieListComponent {
             "imageUrl": "images/spider.png",
         }
     ];
-
+    public toggleImg(): void {
+        this.isImgDisplayed = !this.isImgDisplayed;
+    }
 }
