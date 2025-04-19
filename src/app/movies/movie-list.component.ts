@@ -1,10 +1,12 @@
 import { Component } from "@angular/core";
 import { sharedImports } from '../shared/shared-imports';
+import { movie } from "./movie.model";
 @Component({
     selector: 'app-movies',
     standalone: true,
     imports: [sharedImports],
-    templateUrl: './movie-list.component.html'
+    templateUrl: './movie-list.component.html',
+    styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent {
     subTitle: string= '영화리스트';
@@ -12,7 +14,7 @@ export class MovieListComponent {
     imgMargin: number = 2;
     isImgDisplayed: boolean = false;
     filterText = 'martrix4';
-    movies: any[] = [
+    movies: movie[] = [
         {
             "movieId": 1,
             "name": "matrix4",
@@ -20,6 +22,7 @@ export class MovieListComponent {
             "releaseDate": "2022-01-10",
             "actor": "Keanu Reeves",
             "rate": 4,
+            "price": 2.4,
             "imageUrl": "images/matrix.png",
         },
         {
@@ -29,6 +32,7 @@ export class MovieListComponent {
             "releaseDate": "2022-01-17",
             "actor": "tom holland",
             "rate": 3,
+            "price":3.0,    
             "imageUrl": "images/spider.png",
         }
     ];
