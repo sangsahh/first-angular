@@ -36,10 +36,10 @@
                   [style.margin.px]="imgMargin">
               </td>
               <td>{{ movie.name}}</td>
-              <td>{{movie.director}}</td>
-              <td>{{movie.releaseDate}}</td>
-              <td>{{movie.actor}}</td>
-              <td>{{movie.rate}}</td>
+              <td>{{movie.director | uppercase }}</td>
+              <td>{{movie.releaseDate | date:'MMM d, y'}}</td>
+              <td>{{movie.actor | lowercase }}</td>
+              <td>{{movie.rate | number:'1.1'}}</td>
             </tr>
           </tbody>
         </table>
