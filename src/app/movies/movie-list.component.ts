@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component , OnInit } from "@angular/core";
 import { sharedImports } from '../shared/shared-imports';
 import { movie } from "./movie.model";
 @Component({
@@ -8,7 +8,7 @@ import { movie } from "./movie.model";
     templateUrl: './movie-list.component.html',
     styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent {
+export class MovieListComponent implements OnInit {
     subTitle: string= '영화리스트';
     imgWidth: number = 55;
     imgMargin: number = 2;
@@ -38,5 +38,8 @@ export class MovieListComponent {
     ];
     public toggleImg(): void {
         this.isImgDisplayed = !this.isImgDisplayed;
+    }
+    public ngOnInit(): void {
+        console.log('앵귤러 라이프사이클: ngOnInit()');
     }
 }
