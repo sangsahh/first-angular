@@ -40,7 +40,7 @@
               <td>{{movie.director | uppercase }}</td>
               <td>{{movie.releaseDate | date:'MMM d, y'}}</td>
               <td>{{movie.actor | lowercase }}</td>
-              <td>{{movie.rate | number:'1.1'}}</td>
+              <td><app-star-score></app-star-score></td>
             </tr>
           </tbody>
         </table>

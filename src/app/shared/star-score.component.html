@@ -1,0 +1,13 @@
+<div class="crop" [style.width.px] = "cropWidth"
+    [title]="rating">
+    <div style="width: 75px;">
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
+</div>
+<!-- 안쪽 div 요소는 별 5개를 표시하기 위한 크기를 75px로 설정
+ 바깥 div 요소는 style.width.px가 cropWidth로 프로퍼티 바인딩 했음
+ cropWidth의 변화에 따라 width가 75~0사이로 변하게 된다. -->

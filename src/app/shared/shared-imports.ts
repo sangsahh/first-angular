@@ -4,7 +4,7 @@ import { DatePipe } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ConvertPipe } from './convert.pipe';
-
+import { StarScoreComponent } from './start-score.component';
 export const sharedImports = [
   NgIf,
   NgForOf,
@@ -12,5 +12,6 @@ export const sharedImports = [
   DatePipe,
   FormsModule,
   CommonModule,
-  ConvertPipe
+  ConvertPipe,
+  StarScoreComponent
 ];
