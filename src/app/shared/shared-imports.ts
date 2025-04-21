@@ -3,6 +3,7 @@ import { AsyncPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ConvertPipe } from './convert.pipe';
 
 export const sharedImports = [
   NgIf,
@@ -10,5 +11,6 @@ export const sharedImports = [
   AsyncPipe,
   DatePipe,
   FormsModule,
-  CommonModule
+  CommonModule,
+  ConvertPipe
 ];
