@@ -66,4 +66,7 @@ export class MovieListComponent implements OnInit {
             return movie.name.toLocaleLowerCase().includes(filterBy);
         })
     }
+    public callFromStar(rating: number){
+        console.log("from star: ", rating);
+    }    
 }

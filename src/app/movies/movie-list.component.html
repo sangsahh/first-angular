@@ -40,7 +40,8 @@
               <td>{{movie.director | uppercase }}</td>
               <td>{{movie.releaseDate | date:'MMM d, y'}}</td>
               <td>{{movie.actor | lowercase }}</td>
-              <td><app-star-score></app-star-score></td>
+              <td><app-star-score [rating]="movie.rate"
+                (call)="callFromStar($event) "></app-star-score></td>
             </tr>
           </tbody>
         </table>
