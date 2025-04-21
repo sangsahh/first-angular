@@ -1,6 +1,7 @@
 import { Component , OnInit } from "@angular/core";
 import { sharedImports } from '../shared/shared-imports';
 import { movie } from "./movie.model";
+import { MovieService } from "./movie.service";
 //component 생성
 @Component({
     selector: 'app-movies',
@@ -8,7 +9,9 @@ import { movie } from "./movie.model";
     imports: [sharedImports],
     templateUrl: './movie-list.component.html',
     //스타일 캡슐화화
-    styleUrls: ['./movie-list.component.scss']
+    styleUrls: ['./movie-list.component.scss'],
+    //컴포넌트에 서비스 등록
+    providers: [MovieService]
 })
 export class MovieListComponent implements OnInit {
     subTitle: string= '영화리스트';
@@ -24,38 +27,25 @@ export class MovieListComponent implements OnInit {
         this._filterText = v;
         this.filteredMovies = this.performFilter(v);
     }
-    
-    movies: movie[] = [
-        {
-            "movieId": 1,
-            "name": "matrix4",
-            "director": "aa",
-            "releaseDate": "2022-01-10",
-            "actor": "Keanu Reeves",
-            "rate": 4,
-            "price": 2.4,
-            "imageUrl": "images/matrix.png",
-        },
-        {
-            "movieId": 2,
-            "name": "spider-man: No Way Home",
-            "director": "bb",
-            "releaseDate": "2022-01-17",
-            "actor": "tom holland",
-            "rate": 3,
-            "price":3.0,    
-            "imageUrl": "images/spider.png",
-        }
-    ];
     //필터 처리
-    filteredMovies: movie[] = this.movies;
+    filteredMovies: movie[] = [];
+    movies: movie[] = [];
+    
+    //생성자로 의존성 주입
+    constructor(private movieService: MovieService){
+
+    }
+
     // 이벤트 생성성
     public toggleImg(): void {
         this.isImgDisplayed = !this.isImgDisplayed;
     }
     //OnInit 라이프사이클클 체크
+    //OnInit 라이프 사이클에서 movie 서비스로 모든 영화를 가져온후
+    //초기 화면에 모든 영화를 보이기 위해 filter에 초기값 저장장
     public ngOnInit(): void {
-        console.log('앵귤러 라이프사이클: ngOnInit()');
+        this.movies = this.movieService.getMovies();
+        this.filteredMovies = this.movies;
     }
     // filterBy를 매개변수, return값 movie[]
     public performFilter(filterBy: string ): movie[] {
