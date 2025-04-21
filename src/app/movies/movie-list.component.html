@@ -27,7 +27,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let movie of movies">
+            <!-- ngfor 사용 -->
+            <tr *ngFor="let movie of filteredMovies">
               <td>
                 <img  *ngIf="isImgDisplayed" 
                 [src]="movie.imageUrl"
