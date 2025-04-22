@@ -1,1 +1,9 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand">{{title}}</a>
+    <ul class="nav nav-pills">
+        <!-- 라우터 링크 걸기 -->
+        <li><a class="nav-link" [routerLink]="['/welcome']">Home</a></li>
+        <li><a class="nav-link" [routerLink]="['/movies']">Movie List</a></li>
+    </ul>
+</nav>
 <router-outlet></router-outlet>

@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ConvertPipe } from './convert.pipe';
 import { StarScoreComponent } from './start-score.component';
-import { HttpClient } from "@angular/common/http";
+import { RouterModule } from '@angular/router';
 export const sharedImports = [
   NgIf,
   NgForOf,
@@ -15,5 +15,6 @@ export const sharedImports = [
   CommonModule,
   ConvertPipe,
   StarScoreComponent,
+  RouterModule
   
 ];

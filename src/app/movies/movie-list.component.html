@@ -36,7 +36,7 @@
                   [style.width.px]="imgWidth"
                   [style.margin.px]="imgMargin">
               </td>
-              <td>{{ movie.name | convert:'-':' '}}</td>
+              <td><a [routerLink]="['/movies', movie.movieId]">{{ movie.name | convert:'-':' '}}</a></td>
               <td>{{movie.director | uppercase }}</td>
               <td>{{movie.releaseDate | date:'MMM d, y'}}</td>
               <td>{{movie.actor | lowercase }}</td>
