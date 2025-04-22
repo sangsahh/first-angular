@@ -1,0 +1,22 @@
+[
+    {
+        "movieId": 1,
+        "name": "matrix4",
+        "director": "aa",
+        "releaseDate": "2022-01-10",
+        "actor": "Keanu Reeves",
+        "rate": 4,
+        "price": 2.4,
+        "imageUrl": "images/matrix.png"
+    },
+    {
+        "movieId": 2,
+        "name": "spider-man: No Way Home",
+        "director": "bb",
+        "releaseDate": "2022-01-17",
+        "actor": "tom holland",
+        "rate": 3,
+        "price":3.0,    
+        "imageUrl": "images/spider.png"
+    }
+]

@@ -2,11 +2,13 @@ import { Component , OnInit } from "@angular/core";
 import { sharedImports } from '../shared/shared-imports';
 import { movie } from "./movie.model";
 import { MovieService } from "./movie.service";
+import {  Subscription } from "rxjs";
+import { HttpClientModule } from '@angular/common/http';
 //component 생성
 @Component({
     selector: 'app-movies',
     standalone: true,
-    imports: [sharedImports],
+    imports: [sharedImports, HttpClientModule],
     templateUrl: './movie-list.component.html',
     //스타일 캡슐화화
     styleUrls: ['./movie-list.component.scss'],
@@ -18,6 +20,10 @@ export class MovieListComponent implements OnInit {
     imgWidth: number = 55;
     imgMargin: number = 2;
     isImgDisplayed: boolean = false;
+
+    //구독 활성화
+    subscription!: Subscription;
+
     // get,set 만들기기
     private _filterText = '';
     get filterText() : string {
@@ -33,9 +39,7 @@ export class MovieListComponent implements OnInit {
     
     //생성자로 의존성 주입
     constructor(private movieService: MovieService){
-
     }
-
     // 이벤트 생성성
     public toggleImg(): void {
         this.isImgDisplayed = !this.isImgDisplayed;
@@ -44,8 +48,18 @@ export class MovieListComponent implements OnInit {
     //OnInit 라이프 사이클에서 movie 서비스로 모든 영화를 가져온후
     //초기 화면에 모든 영화를 보이기 위해 filter에 초기값 저장장
     public ngOnInit(): void {
-        this.movies = this.movieService.getMovies();
-        this.filteredMovies = this.movies;
+        this.subscription = this.movieService.getMovies().subscribe({
+            next: (data) => {
+                this.movies = data;
+                this.filteredMovies = this.movies;
+            },
+            error: (error) => console.log(error),
+            complete: () => console.log('complete')
+        });
+    }
+    //구독 끊기
+    public ngOnDestory() : void {
+        this.subscription.unsubscribe();
     }
     // filterBy를 매개변수, return값 movie[]
     public performFilter(filterBy: string ): movie[] {
