@@ -3,3 +3,25 @@ Angular CLI는 Angular에 대한 명령줄 인터페이스입니다. Angular CLI
 Angular CLI new 명령을 사용하여 새 앵귤러 애플리케이션을 만들 수 있습니다. 실제로 프로젝트를 만들고 생성된 파일을 살펴보겠습니다. 프로젝트를 생성하기 원하는 폴더로 이동해서 아래 커맨드를 실행하겠습니다.
 
 ng new hello-angular --prefix ha
+
+컴포넌트 생성
+
+ng g c <name>
+디렉티브 생성
+
+ng g d <name>
+라우트 가드 생성
+
+ng g g <name>
+인터페이스 생성
+
+ng g i <name>
+모듈 생성
+
+ng g m <name>
+파이프 생성
+
+ng g p <name>
+서비스 생성
+
+ng g s <name>
