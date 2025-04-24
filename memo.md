@@ -5,23 +5,22 @@ Angular CLI new 명령을 사용하여 새 앵귤러 애플리케이션을 만�
 ng new hello-angular --prefix ha
 
 컴포넌트 생성
-
 ng g c <name>
+
 디렉티브 생성
-
 ng g d <name>
+
 라우트 가드 생성
-
 ng g g <name>
+
 인터페이스 생성
-
 ng g i <name>
+
 모듈 생성
-
 ng g m <name>
+
 파이프 생성
-
 ng g p <name>
-서비스 생성
 
+서비스 생성
 ng g s <name>
