@@ -1,0 +1,14 @@
+[
+    {
+        "userNum": 1,
+        "id": "test123@gmail.com",
+        "pw": "test123@",
+        "nick": "성근"
+    },
+    {
+        "userNum": 2,
+        "id": "test222@gmail.com",
+        "pw": "test222@",
+        "nick": "성근1"  
+    }
+]
