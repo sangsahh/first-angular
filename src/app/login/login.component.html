@@ -1,6 +1,8 @@
 <body class="text-center">
     
     <main class="form-signin">
+      <div class="input-form-backgroud row">
+      <div class="input-form col-md-12 mx-auto">
       <form (ngSubmit)="onLogin()">
         <img class="mb-4" src="images/tomato.png" alt="" width="150" height="57">
         <h1 class="h3 mb-3 fw-normal">Login</h1>
@@ -27,11 +29,11 @@
         <div class="mb-3">
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         </div>
-        <button class="w-100 btn btn-lg btn-secondary" type="button">join the membership</button>
+        <button class="w-100 btn btn-lg btn-secondary" type="button" (click)="goToSignup()">join the membership</button>
         <p class="mt-5 mb-3 text-muted">{{title}}</p>
       </form>
+      </div>
+      </div>
     </main>
-    
-    
-        
       </body>
+      <router-outlet />

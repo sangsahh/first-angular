@@ -4,6 +4,7 @@ import { LoginServiceService } from './login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { LoginModel } from './login-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +15,12 @@ import { LoginModel } from './login-model';
   providers: [LoginServiceService]
 })
 export class LoginComponent {
-  title:string  = '(주)KSG';
+  title:string  = 'KSG';
   id: string = '';
   pw: string = '';
   loginFailed: boolean =false;
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private router: Router){
   }
 
   onLogin() {
@@ -27,14 +28,17 @@ export class LoginComponent {
       const user = users.find(u => u.id === this.id && u.pw === this.pw);
       if(user){
         this.loginFailed = false;
-        alert('로그인 성공!');
+        alert('ログイン成功');
       }else{
         this.loginFailed = true;
-        alert('틀려요');
+        alert('違う');
       }
     })
   }
 
+  goToSignup() {
+    this.router.navigate(['/signup']);
+  }
 
 }
 
