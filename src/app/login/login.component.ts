@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {sharedImports} from '../shared/shared-import';
-import { LoginServiceService } from './login.service';
+import { LoginService } from './login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { LoginModel } from './login-model';
@@ -12,33 +12,37 @@ import { Router } from '@angular/router';
   imports: [HttpClientModule, sharedImports],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  providers: [LoginServiceService]
+  providers: [LoginService]
 })
 export class LoginComponent {
   title:string  = 'KSG';
   id: string = '';
   pw: string = '';
   loginFailed: boolean =false;
+  
+  constructor(private LoginService: LoginService, private router: Router){
 
-  constructor(private http: HttpClient, private router: Router){
   }
 
-  onLogin() {
-    this.http.get<LoginModel[]>('json/login.json').subscribe(users => {
-      const user = users.find(u => u.id === this.id && u.pw === this.pw);
-      if(user){
+  onLogin(): void {
+    this.LoginService.login(this.id, this.pw).subscribe({
+      next: (res) => {
+        this.LoginService.saveToken(res.token);
         this.loginFailed = false;
-        alert('ログイン成功');
-      }else{
+        this.router.navigate(['/main']);
+      },
+
+      error: () => {
         this.loginFailed = true;
-        alert('違う');
       }
     })
   }
 
-  goToSignup() {
-    this.router.navigate(['/signup']);
+  goToSignup(): void{
+    this.router.navigate(["/signup"]);
   }
 
+
+ 
 }
 

@@ -6,25 +6,21 @@ import {LoginModel} from'./login-model';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginServiceService {
-  private loginUrl = 'json/login.json';
+export class LoginService {
+  private bassUrl = "http://localhost:8080/api/auth";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient){}
 
-  getMovies(): Observable<LoginModel[]> {
-    return this.http.get<LoginModel[]>(this.loginUrl).pipe(
-      tap(data => console.log(JSON.stringify(data))),
-      catchError(this.handleError)
-    )
+  login(email: string, password: string): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${this.bassUrl}/login`, {
+      email: email,
+      password: password
+    });
   }
 
-  private handleError(error: HttpErrorResponse){
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent){
-      errorMessage = `error ${error.error.message}`;
-    }else{
-      errorMessage = `return code: ${error.status}, message:${error.message}`
-    }
-    return throwError(() => new Error(errorMessage));
-  };
+  saveToken(token: string){
+    sessionStorage.setItem('jwt', token);
+  }
+
+  
 }
