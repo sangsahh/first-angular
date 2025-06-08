@@ -29,7 +29,7 @@ export class LoginComponent {
       next: (res) => {
         this.LoginService.saveToken(res.token);
         this.loginFailed = false;
-        this.router.navigate(['/main']);
+        this.router.navigate(['/chat']);
       },
 
       error: () => {
