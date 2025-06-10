@@ -11,5 +11,27 @@ import { ChatboxService } from './chatbox.service';
   providers: [ChatboxService]
 })
 export class ChatboxComponent {
+  messages: any[] = [];
+  newMessage = '';
+  username = 'User1';
+
+
+  constructor(private chatboxService: ChatboxService) {}
+
+  ngOnInit() {
+    this.chatboxService.connect(msg => {
+      this.messages.push(msg);
+    });
+  }
+
+  send() {
+    if (this.newMessage.trim()) {
+      this.chatboxService.sendMessage({
+        sender: this.username,
+        content: this.newMessage,
+      });
+      this.newMessage = '';
+    }
+  }
 
 }

@@ -3,12 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import { sharedImports } from './shared/shared-import';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, sharedImports],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
