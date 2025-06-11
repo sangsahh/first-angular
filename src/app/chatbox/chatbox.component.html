@@ -5,6 +5,29 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
 <body>
+  <!-- 채팅방 생성 버튼 -->
+<button (click)="openUserSearchModal()" class="btn btn-primary">채팅방 생성</button>
+
+<!-- 모달 -->
+<ng-template #userSearchModal>
+  <div class="modal-header">
+    <h4 class="modal-title">이메일로 사용자 검색</h4>
+    <button type="button" class="close" (click)="closeModal()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <input type="text" [(ngModel)]="searchEmail" placeholder="이메일 입력" class="form-control">
+    <button class="btn btn-info mt-2" (click)="searchUser()">검색</button>
+
+    <div *ngIf="searchResults.length > 0">
+      <ul class="list-group mt-3">
+        <li class="list-group-item d-flex justify-content-between" *ngFor="let user of searchResults">
+          {{ user.email }}
+          <button class="btn btn-sm btn-success" (click)="createChatRoom(user.id)">채팅방 생성</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
 <div class="container">
 <h3 class=" text-center">Messaging</h3>
 <div class="messaging">

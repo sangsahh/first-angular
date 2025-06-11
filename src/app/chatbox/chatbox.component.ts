@@ -1,5 +1,6 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { sharedImports } from '../shared/shared-import';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatboxService } from './chatbox.service';
 @Component({
@@ -11,12 +12,36 @@ import { ChatboxService } from './chatbox.service';
   providers: [ChatboxService]
 })
 export class ChatboxComponent {
+  @ViewChild('userSearchModal') userSearchModal:any;
+  searchEmail = '';
+  searchResults: any[] = [];
   messages: any[] = [];
   newMessage = '';
   username = 'User1';
 
 
-  constructor(private chatboxService: ChatboxService) {}
+  constructor(private chatboxService: ChatboxService, private modalService: NgbModal) {}
+
+  openUserSearchModal() {
+    this.modalService.open(this.userSearchModal);
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
+  }
+
+  searchUser(){
+    this.chatboxService.searchUserByEmail(this.searchEmail).subscribe((res: any) => {
+      this.searchResults = res;
+    })
+  }
+
+  createChatRoom(userId: number){
+    this.chatboxService.createChatRoom(userId).subscribe(() => {
+      alert('채팅방이 생성되었습니다.');
+      this.closeModal();
+    })
+  }
 
   ngOnInit() {
     this.chatboxService.connect(msg => {
